@@ -40,7 +40,7 @@
       <guard equation="t&gt;=5" />
       <action equation="t = 0" />
     </transition>
-    <transition destination="1" id="0" source="1">
+    <transition destination="0" id="2" source="1">
       <guard equation="t&gt;=5" />
       <action equation="t = 0" />
     </transition>
