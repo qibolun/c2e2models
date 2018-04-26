@@ -12,7 +12,7 @@
     <variable name="t" scope="LOCAL_DATA" type="Real" />
     <mode id="0" initial="True" name="communication">
       <dai equation="e1_dot= v1" />
-      <dai equation="v1_dot= -a1" />
+      <dai equation="v1_dot= -a1 + 4" />
       <dai equation="a1_dot= -3.5754*a1 - 0.045*a2 - 0.0946*a3 + 1.605*e1 - 0.8198*e2 - 0.1942*e3 + 4.868*v1 + 0.427*v2 + 0.3626*v3" />
       <dai equation="e2_dot= v2" />
       <dai equation="v2_dot= a1 - a2" />
@@ -25,7 +25,7 @@
     </mode>
     <mode id="1" initial="False" name="no_communication">
       <dai equation="e1_dot= v1" />
-      <dai equation="v1_dot= -a1" />
+      <dai equation="v1_dot= -a1 + 4" />
       <dai equation="a1_dot= -3.5754*a1 + 1.605*e1 + 4.868*v1" />
       <dai equation="e2_dot= v2" />
       <dai equation="v2_dot= a1 - a2" />

@@ -1,0 +1,88 @@
+<hyxml type="Model">
+  <automaton name="default_automaton">
+    <variable name="xp" scope="LOCAL_DATA" type="Real" />
+    <variable name="yp" scope="LOCAL_DATA" type="Real" />
+    <variable name="xd" scope="LOCAL_DATA" type="Real" />
+    <variable name="yd" scope="LOCAL_DATA" type="Real" />
+    <variable name="ux" scope="LOCAL_DATA" type="Real" />
+    <variable name="uy" scope="LOCAL_DATA" type="Real" />
+    <variable name="t" scope="LOCAL_DATA" type="Real" />
+    <variable name="loc" scope="LOCAL_DATA" type="Real" />
+    <mode id="0" initial="True" name="ProxA">
+      <dai equation="xp_dot= xd" />
+      <dai equation="yp_dot= yd" />
+      <dai equation="xd_dot= -0.002*ux + 5.75894721132e-5*xp + 0.00876276*yd" />
+      <dai equation="yd_dot= -0.002*uy - 0.00876276*xd" />
+      <dai equation="ux_dot= -2.89995083970656*ux + 9.24894463774964e-6*uy + 28.8287182000841*xd + 0.0835033190064659*xp + 12.6053066618136*yd" />
+      <dai equation="uy_dot= 9.24894463774964e-6*ux - 2.90300269286856*uy - 12.6321422597952*xd - 2.66320919646107e-7*xp + 33.2561587219102*yd" />
+      <dai equation="t_dot= 1" />
+      <dai equation="loc_dot= 0" />
+      <invariant equation="yp&lt;-100 || xp+yp&lt;-141.1 || xp&lt;-100 || yp-xp&gt;141.1 || yp&gt;100 || xp+yp&gt;141.1 || xp&gt;100 || yp-xp&lt;-141.1" />
+    </mode>
+    <mode id="1" initial="False" name="ProxB">
+      <dai equation="xp_dot= xd" />
+      <dai equation="yp_dot= yd" />
+      <dai equation="xd_dot= -0.002*ux + 5.75894721132e-5*xp + 0.00876276*yd" />
+      <dai equation="yd_dot= -0.002*uy - 0.00876276*xd" />
+      <dai equation="ux_dot= -19.2299795908647*ux - 6.82399930800808e-10*uy + 288.028766268484*xd + 0.553722186692755*xp + 84.122604940107*yd" />
+      <dai equation="uy_dot= -6.82399930800808e-10*ux - 19.2299765959399*uy - 84.1225918175502*xd + 1.96495258924514e-11*xp + 287.999970098933*yd" />
+      <dai equation="t_dot= 1" />
+      <dai equation="loc_dot= 0" />
+      <invariant equation="yp&gt;=-100" />
+      <invariant equation="xp+yp&gt;=-141.1" />
+      <invariant equation="xp&gt;=-100" />
+      <invariant equation="yp-xp&lt;=141.1" />
+      <invariant equation="yp&lt;=100" />
+      <invariant equation="xp+yp&lt;=141.1" />
+      <invariant equation="xp&lt;=100" />
+      <invariant equation="yp-xp&gt;=-141.1" />
+    </mode>
+    <transition destination="1" id="0" source="0">
+      <guard equation="yp&gt;=-100&amp;&amp;xp+yp&gt;=-141.1&amp;&amp;xp&gt;=-100&amp;&amp;yp-xp&lt;=141.1&amp;&amp;yp&lt;=100&amp;&amp;xp+yp&lt;=141.1&amp;&amp;xp&lt;=100&amp;&amp;yp-xp&gt;=-141.1" />
+      <action equation="loc = 3" />
+    </transition>
+  </automaton>
+  <composition automata="default_automaton" />
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="THRUST1" type="Safety" unsafeSet="ux&lt;-36000.0">
+    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="THRUST2" type="Safety" unsafeSet="ux&gt;36000.0">
+    <parameters kvalue="0.0" timehorizon="0.0" timestep="0.0" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="THRUST3" type="Safety" unsafeSet="uy&lt;-36000.0">
+    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="THRUST4" type="Safety" unsafeSet="uy&gt;36000.0">
+    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="LOS1" type="Safety" unsafeSet="loc==3&amp;&amp;xp&lt;-100">
+    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="LOS3" type="Safety" unsafeSet="loc==3&amp;&amp;yp-0.577*xp&lt;0">
+    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="VEL1" type="Safety" unsafeSet="loc==3&amp;&amp;xd&gt;3">
+    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="VEL2" type="Safety" unsafeSet="loc==3&amp;&amp;xd&lt;-3">
+    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="VEL3" type="Safety" unsafeSet="loc==3&amp;&amp;yd&gt;3">
+    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="VEL4" type="Safety" unsafeSet="loc==3&amp;&amp;yd&lt;-3">
+    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="VEL5" type="Safety" unsafeSet="loc==3&amp;&amp;yd+xd&gt;4.243">
+    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="VEL6" type="Safety" unsafeSet="loc==3&amp;&amp;yd-xd&lt;-4.243">
+    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="VEL7" type="Safety" unsafeSet="loc==3&amp;&amp;yd-xd&gt;4.243">
+    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="VEL8" type="Safety" unsafeSet="loc==3&amp;&amp;yd+xd&lt;-4.243">
+    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
+  </property>
+</hyxml>
