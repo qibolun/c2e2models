@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hyxml>
+<hyxml type="Model">
+    <automaton name="default_automaton">
+        <variable name="x1" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x2" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x3" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x4" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x5" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x6" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x7" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x8" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x9" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x10" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x11" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x12" scope="LOCAL_DATA" type="Real"/>
+            <mode id="0" initial="True" name="Model">
+                <dai equation="x1_dot = x4*cos(x8)*cos(x9)+(sin(x7)*sin(x8)*cos(x9)-cos(x7)*sin(x9))*x5+(cos(x7)*sin(x8)*cos(x9)+sin(x7)*sin(x9))*x6"/>
+                <dai equation="x2_dot = x4*cos(x8)*sin(x9)+(sin(x7)*sin(x8)*sin(x9)+cos(x7)*cos(x9))*x5+(cos(x7)*sin(x8)*sin(x9)-sin(x7)*cos(x9))*x6"/>
+                <dai equation="x3_dot = x4*sin(x8)-sin(x7)*cos(x8)*x5-cos(x7)*cos(x8)*x6"/>
+                <dai equation="x4_dot = x12*x5-x11*x6-9.81*sin(x8)"/>
+                <dai equation="x5_dot = x10*x6-x12*x4+9.81*cos(x8)*sin(x7)"/>
+                <dai equation="x6_dot = x11*x4-x10*x5+9.81*cos(x8)*cos(x7)-((1.4*9.81-10*x3+3*x6)/1.4)"/>
+                <dai equation="x7_dot = x10+sin(x7)*tan(x8)*x11+cos(x7)*tan(x8)*x12"/>
+                <dai equation="x8_dot = cos(x7)*x11-sin(x7)*x12"/>
+                <dai equation="x9_dot = (sin(x7)*x11/cos(x8))+(cos(x7)*x12/cos(x8))"/>
+                <dai equation="x10_dot = -(0.05*x11*x12/0.054)-((x7+x10)/0.054)"/>
+                <dai equation="x11_dot = (0.05*x10*x12/0.054)-((x8+x11)/0.054)"/>
+                <dai equation="x12_dot = 0"/>
+            </mode>
+    </automaton>
+    <composition automata="default_automaton" />
+    <property initialSet="Model: x1&gt;=-0.4&amp;&amp;x1&lt;=0.4&amp;&amp;x2&gt;=-0.4&amp;&amp;x2&lt;=0.4&amp;&amp;x3&gt;=-0.4&amp;&amp;x3&lt;=0.4&amp;&amp;x4&gt;=-0.4&amp;&amp;x4&lt;=0.4&amp;&amp;x5&gt;=-0.4&amp;&amp;x5&lt;=0.4&amp;&amp;x6&gt;=-0.4&amp;&amp;x6&lt;=0.4&amp;&amp;x7==0&amp;&amp;x8==0&amp;&amp;x9==0&amp;&amp;x10==0&amp;&amp;x11==0&amp;&amp;x12==0" name="p1" type="0" unsafeSet="x3&lt;=1.2">
+        <parameters kvalue="1000.0" timehorizon="5.0" timestep="0.0001"/>
+    </property>
+</hyxml>            
