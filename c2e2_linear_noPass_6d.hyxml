@@ -58,9 +58,6 @@
   <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="LOS1" type="Safety" unsafeSet="loc==3&amp;&amp;xp&lt;-100">
     <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
   </property>
-  <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="LOS3" type="Safety" unsafeSet="loc==3&amp;&amp;yp-0.577*xp&lt;0">
-    <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
-  </property>
   <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0&amp;&amp;ux&lt;=-25182.3889893147&amp;&amp;ux&gt;=-26628.8468705749&amp;&amp;uy&lt;=-12547.2134357438&amp;&amp;uy&gt;=-14214.3741819306" name="VEL1" type="Safety" unsafeSet="loc==3&amp;&amp;xd&gt;3">
     <parameters kvalue="0.0" timehorizon="270.0" timestep="0.1" />
   </property>

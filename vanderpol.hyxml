@@ -13,6 +13,6 @@
   </automaton>
   <composition automata="default_automaton" />
   <property initialSet="VO:x&gt;=1.25&amp;&amp;x&lt;=1.55&amp;&amp;y&gt;=2.35&amp;&amp;y&lt;=2.45" name="Prop1" type="Safety" unsafeSet="y&gt;=2.75">
-    <parameters kvalue="4000.0" timehorizon="7.0" timestep="0.01" />
+    <parameters kvalue="1000.0" timehorizon="7.0" timestep="0.01" />
   </property>
 </hyxml>

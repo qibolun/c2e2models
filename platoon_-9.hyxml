@@ -25,7 +25,7 @@
     </mode>
     <mode id="1" initial="False" name="no_communication">
       <dai equation="e1_dot= v1" />
-      <dai equation="v1_dot= -a1 + 4" />
+      <dai equation="v1_dot= -a1 - 9" />
       <dai equation="a1_dot= -3.5754*a1 + 1.605*e1 + 4.868*v1" />
       <dai equation="e2_dot= v2" />
       <dai equation="v2_dot= a1 - a2" />
