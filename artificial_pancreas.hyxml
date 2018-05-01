@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hyxml>
+<hyxml type="Model">
+    <automaton name="default_automaton">
+        <variable name="x1" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x2" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x3" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x4" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x5" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x6" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x7" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x8" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x9" scope="LOCAL_DATA" type="Real"/>
+        <variable name="x10" scope="LOCAL_DATA" type="Real"/>
+            <mode id="0" initial="True" name="Model">
+                <dai equation="x1_dot = -0.0278*x1+0.0278*(18.2129*x8-100.25)"/>
+                <dai equation="x2_dot = -0.0171*x2+0.97751710655*0.2 "/>
+                <dai equation="x3_dot = 0.0152*x2-0.0078*x3"/>
+                <dai equation="x4_dot = 4.7314-0.0047*x4-0.0121*x10-1-0.0581*x4+0.0871*x5+1.9942"/>
+                <dai equation="x5_dot = -0.0039*(3.2267+0.0313*x1)*x5*(1-0.0026*x5+(0.0000025097)*x5**2)+ 0.0581*x4-0.0871*x5"/>
+                <dai equation="x6_dot = 0.1*(0.5221*x4-x6)"/>
+                <dai equation="x7_dot = -0.4219*x7+0.2250*x8"/>
+                <dai equation="x8_dot = -0.3150*x8+0.1545*x7+0.0019*x2+0.0078*x3"/>
+                <dai equation="x9_dot = -0.0046*(x9-18.2129*x8)"/>
+                <dai equation="x10_dot = -0.0046*(x10-x9)"/>
+            </mode>
+    </automaton>
+    <composition automata="default_automaton" />
+    <property initialSet="Model: x1==0.0 &amp;&amp; x2==72.43 &amp;&amp; x3==141.15 &amp;&amp; x4&gt;=229.824 &amp;&amp; x4&lt;=268.128 &amp;&amp; x5==162.45 &amp;&amp; x6&gt;=120.0 &amp;&amp; x6&lt;=140.0 &amp;&amp; x7==3.2 &amp;&amp; x8==5.5 &amp;&amp; x9==100.25 &amp;&amp; x10==100.25" name="large" type="0" unsafeSet="x6&gt;=300">
+        <parameters kvalue="2000.0" timehorizon="30.0" timestep="0.001"/>
+    </property>
+</hyxml>            

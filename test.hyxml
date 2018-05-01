@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hyxml>
+<hyxml type="Model">
+  <automaton name="default_automaton">
+    <variable scope="LOCAL_DATA" type="Real" name="x"/>
+    <variable scope="LOCAL_DATA" type="Real" name="y"/>
+    <mode initial="True" id="0" name="heating">
+      <dai equation="x_dot = 40-0.5*x"/>
+      <dai equation="y_dot = 1"/>
+      <invariant equation="x&lt;75"/>
+    </mode>
+    <mode initial="False" id="1" name="cooling">
+      <dai equation="x_dot = 30-0.5*x"/>
+      <dai equation="y_dot = 1"/>
+      <invariant equation="x&gt;65"/>
+    </mode>
+    <transition source="0" destination="1" id="0">
+      <guard equation="x&gt;=75"/>
+      <action equation="y = x+1" />
+    </transition>
+    <transition source="1" destination="0" id="1">
+      <guard equation="x&lt;=65"/>
+      <action equation="y = x-1" />
+    </transition>
+  </automaton>
+  <composition automata="default_automaton"/>
+  <property unsafeSet="x&lt;=66" type="0" name="Property1" initialSet="heating: x&gt;=68&amp;&amp;x&lt;=69&amp;&amp;y==1.0">
+    <parameters kvalue='2000.0' timehorizon="10.0" timestep="0.01"/>
+  </property>
+</hyxml>
