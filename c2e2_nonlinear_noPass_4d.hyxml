@@ -1,5 +1,3 @@
-<?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE hyxml>
 <hyxml type="Model">
   <automaton name="default_automaton">
     <variable name="xp" scope="LOCAL_DATA" type="Real" />
@@ -38,9 +36,8 @@
       <action equation="loc = 3" />
     </transition>
   </automaton>
-  <composition automata="default_automaton" />
   <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0" name="LOS1" type="Safety" unsafeSet="loc==3&amp;&amp;xp&lt;-100">
-    <parameters kvalue="2000.0" timehorizon="270.0" timestep="0.1" />
+    <parameters kvalue="2000.0" timehorizon="200.0" timestep="0.1" />
   </property>
   <property initialSet="ProxA:t==0&amp;&amp;loc==2&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0" name="VEL1" type="Safety" unsafeSet="loc==3&amp;&amp;xd&gt;3">
     <parameters kvalue="2000.0" timehorizon="270.0" timestep="0.1" />

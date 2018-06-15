@@ -5,12 +5,16 @@
     <variable name="px" scope="LOCAL_DATA" type="Real" />
     <variable name="py" scope="LOCAL_DATA" type="Real" />
     <variable name="ii" scope="LOCAL_DATA" type="Real" />
+    <variable name="trans1" scope="LOCAL_DATA" type="Real" />
+    <variable name="trans2" scope="LOCAL_DATA" type="Real" />
     <mode id="0" initial="True" name="move_free">
       <dai equation="vx_dot= 21.8750000000000" />
       <dai equation="vy_dot= -0.114285714285710" />
       <dai equation="px_dot= vx" />
       <dai equation="py_dot= vy" />
       <dai equation="ii_dot= 0" />
+      <dai equation="trans1_dot= 0" />
+      <dai equation="trans2_dot= 0" />
       <invariant equation="px&lt;=-0.003" />
       <invariant equation="py + 0.726542528005361 * px&lt;=0" />
       <invariant equation="py - 0.726542528005361 * px&gt;=0" />
@@ -29,7 +33,7 @@
     </transition>
   </automaton>
   <composition automata="default_automaton" />
-  <property initialSet="move_free:vx==0&amp;&amp;vy==0&amp;&amp;px&gt;=-0.0168&amp;&amp;px&lt;=-0.0166&amp;&amp;py&gt;=0.0029&amp;&amp;py&lt;=0.0031&amp;&amp;ii==0" name="P1" type="Safety" unsafeSet="ii&gt;=20">
+  <property initialSet="move_free:trans1==0&amp;&amp;trans2==0&amp;&amp;vx==0&amp;&amp;vy==0&amp;&amp;px&gt;=-0.0168&amp;&amp;px&lt;=-0.0166&amp;&amp;py&gt;=0.0029&amp;&amp;py&lt;=0.0031&amp;&amp;ii==0" name="P1" type="Safety" unsafeSet="ii&gt;=20">
     <parameters kvalue="2000.0" timehorizon="0.2" timestep="0.001" />
   </property>
 </hyxml>

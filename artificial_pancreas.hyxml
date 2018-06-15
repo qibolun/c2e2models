@@ -26,7 +26,7 @@
             </mode>
     </automaton>
     <composition automata="default_automaton" />
-    <property initialSet="Model: x1==0.0 &amp;&amp; x2==72.43 &amp;&amp; x3==141.15 &amp;&amp; x4&gt;=229.824 &amp;&amp; x4&lt;=268.128 &amp;&amp; x5==162.45 &amp;&amp; x6&gt;=120.0 &amp;&amp; x6&lt;=140.0 &amp;&amp; x7==3.2 &amp;&amp; x8==5.5 &amp;&amp; x9==100.25 &amp;&amp; x10==100.25" name="large" type="0" unsafeSet="x6&gt;=300">
+    <property initialSet="Model: x1==0 &amp;&amp; x2==72 &amp;&amp; x3==141 &amp;&amp; x4&gt;=230 &amp;&amp; x4&lt;=268 &amp;&amp; x5==162 &amp;&amp; x6&gt;=120 &amp;&amp; x6&lt;=140 &amp;&amp; x7==3 &amp;&amp; x8==6 &amp;&amp; x9==100 &amp;&amp; x10==100" name="large" type="0" unsafeSet="x6&gt;=300">
         <parameters kvalue="2000.0" timehorizon="30.0" timestep="0.001"/>
     </property>
 </hyxml>            

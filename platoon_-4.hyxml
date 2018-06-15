@@ -10,9 +10,10 @@
     <variable name="v3" scope="LOCAL_DATA" type="Real" />
     <variable name="a3" scope="LOCAL_DATA" type="Real" />
     <variable name="t" scope="LOCAL_DATA" type="Real" />
+    <variable name="u" scope="LOCAL_DATA" type="Real" />
     <mode id="0" initial="True" name="communication">
       <dai equation="e1_dot= v1" />
-      <dai equation="v1_dot= -a1 - 4" />
+      <dai equation="v1_dot= -a1 - u" />
       <dai equation="a1_dot= -3.5754*a1 - 0.045*a2 - 0.0946*a3 + 1.605*e1 - 0.8198*e2 - 0.1942*e3 + 4.868*v1 + 0.427*v2 + 0.3626*v3" />
       <dai equation="e2_dot= v2" />
       <dai equation="v2_dot= a1 - a2" />
@@ -21,11 +22,12 @@
       <dai equation="v3_dot= a2 - a3" />
       <dai equation="a3_dot= -0.0964*a1 - 0.0876*a2 - 3.1356*a3 + 0.7132*e1 + 0.8472*e2 + 1.2726*e3 + 3.573*v1 + 3.2568*v2 + 3.072*v3" />
       <dai equation="t_dot= 1" />
+      <dai equation="u_dot= 0" />
       <invariant equation="t&lt;5" />
     </mode>
     <mode id="1" initial="False" name="no_communication">
       <dai equation="e1_dot= v1" />
-      <dai equation="v1_dot= -a1 - 4" />
+      <dai equation="v1_dot= -a1 - u" />
       <dai equation="a1_dot= -3.5754*a1 + 1.605*e1 + 4.868*v1" />
       <dai equation="e2_dot= v2" />
       <dai equation="v2_dot= a1 - a2" />
@@ -34,6 +36,7 @@
       <dai equation="v3_dot= a2 - a3" />
       <dai equation="a3_dot= -0.0964*a1 - 0.0876*a2 - 3.1356*a3 + 0.7132*e1 + 0.8472*e2 + 1.2726*e3 + 3.573*v1 + 3.2568*v2 + 3.072*v3" />
       <dai equation="t_dot= 1" />
+      <dai equation="u_dot= 0" />
       <invariant equation="t&lt;5" />
     </mode>
     <transition destination="1" id="1" source="0">
@@ -46,7 +49,7 @@
     </transition>
   </automaton>
   <composition automata="default_automaton" />
-  <property initialSet="communication:t==0.0&amp;&amp;e1==0.0&amp;&amp;v1==0.0&amp;&amp;a1==0.0&amp;&amp;e2==0.0&amp;&amp;v2==0.0&amp;&amp;a2==0.0&amp;&amp;e3==0.0&amp;&amp;v3==0.0&amp;&amp;a3==0.0" name="Prop1" type="Safety" unsafeSet="e1&lt;=-42&amp;&amp;e2&lt;=-42&amp;&amp;e3&lt;=-42">
+  <property initialSet="communication:t==0.0&amp;&amp;e1==0.0&amp;&amp;v1==0.0&amp;&amp;a1==0.0&amp;&amp;e2==0.0&amp;&amp;v2==0.0&amp;&amp;a2==0.0&amp;&amp;e3==0.0&amp;&amp;v3==0.0&amp;&amp;a3==0.0&amp;&amp;u&gt;=-9&amp;&amp;u&lt;=1" name="Prop1" type="Safety" unsafeSet="e1&lt;=-42&amp;&amp;e2&lt;=-42&amp;&amp;e3&lt;=-42">
     <parameters kvalue="2000.0" timehorizon="20.0" timestep="0.01" />
   </property>
 </hyxml>
