@@ -11,21 +11,20 @@
       <dai equation="px_dot= vx" />
       <dai equation="py_dot= vy" />
       <dai equation="ii_dot= 0" />
-      <invariant equation="px&lt;=-0.003" />
       <invariant equation="py + 0.726542528005361 * px&lt;=0" />
       <invariant equation="py - 0.726542528005361 * px&gt;=0" />
     </mode>
     <transition destination="0" id="0" source="0">
-      <guard equation="py + 0.726542528005361*px&gt;=0 &amp;&amp; 0.587785252292473*vx + 0.809016994374947*vy&gt;0" />
+      <guard equation="py + 0.726542528005361*px&gt;=0 &amp;&amp; 0.587785252292473*vx + 0.809016994374947*vy&gt;0 " />
       <action equation="ii = ii + 7.74867751838096*vx + 10.66513964386099*vy" />
       <action equation="vx = -0.42329949064832*vx - 1.95900368634417*vy" />
       <action equation="vy = -0.346343193165*vx + 0.52329949064*vy" />
     </transition>
     <transition destination="0" id="1" source="0">
-      <guard equation="py - 0.726542528005361*px&lt;=0 &amp;&amp; 0.587785252292473*vx - 0.809016994374947*vy&gt;0" />
-      <action equation="ii = ii + 7.74867751838096*vx + 10.66513964386099*vy" />
+      <guard equation="py - 0.726542528005361*px&lt;=0 &amp;&amp; 0.587785252292473*vx - 0.809016994374947*vy&gt;0 " />
+      <action equation="ii = ii + 7.74867751838096*vx - 10.66513964386099*vy" />
       <action equation="vx = -0.42329949064832*vx + 1.95900368634417*vy" />
-      <action equation="vy = -0.346343193165*vx + 0.52329949064*vy" />
+      <action equation="vy = 0.346343193165*vx + 0.52329949064*vy" />
     </transition>
   </automaton>
   <composition automata="default_automaton" />
