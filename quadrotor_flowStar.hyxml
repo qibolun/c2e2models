@@ -30,7 +30,7 @@
             </mode>
     </automaton>
     <composition automata="default_automaton" />
-    <property initialSet="Model: x1&gt;=-0.4&amp;&amp;x1&lt;=0.4&amp;&amp;x2&gt;=-0.4&amp;&amp;x2&lt;=0.4&amp;&amp;x3&gt;=-0.4&amp;&amp;x3&lt;=0.4&amp;&amp;x4&gt;=-0.4&amp;&amp;x4&lt;=0.4&amp;&amp;x5&gt;=-0.4&amp;&amp;x5&lt;=0.4&amp;&amp;x6&gt;=-0.4&amp;&amp;x6&lt;=0.4&amp;&amp;x7==0&amp;&amp;x8==0&amp;&amp;x9==0&amp;&amp;x10==0&amp;&amp;x11==0&amp;&amp;x12==0" name="p1" type="Safety" unsafeSet="x3&gt;=1.4">
-        <parameters kvalue="1000.0" timehorizon="5.0" timestep="1e-300" />
+    <property initialSet="Model: x1&gt;=0.1&amp;&amp;x1&lt;=0.2&amp;&amp;x2&gt;=0.1&amp;&amp;x2&lt;=0.2&amp;&amp;x3&gt;=0.1&amp;&amp;x3&lt;=0.2&amp;&amp;x4&gt;=0.1&amp;&amp;x4&lt;=0.2&amp;&amp;x5&gt;=0.1&amp;&amp;x5&lt;=0.2&amp;&amp;x6&gt;=0.1&amp;&amp;x6&lt;=0.2&amp;&amp;x7==0&amp;&amp;x8==0&amp;&amp;x9==0&amp;&amp;x10==0&amp;&amp;x11==0&amp;&amp;x12==0" name="p1" type="Safety" unsafeSet="x3&gt;=1.4">
+        <parameters kvalue="1000.0" timehorizon="5.0" timestep="0.25" />
     </property>
 </hyxml>            

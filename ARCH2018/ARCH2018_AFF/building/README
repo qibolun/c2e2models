@@ -1,0 +1,3 @@
+There's a bug in C2E2 that influence the result for the building model. 
+The reachtube calculated by C2E2 looks totally safe. However, the safety result shown is unknown. 
+This bug will be fixed in the next release of C2E2.

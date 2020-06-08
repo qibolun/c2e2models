@@ -28,22 +28,50 @@
       <dai equation="trans_dot = 0"/>
     </mode>
     <transition destination="0" id="0" source="0">
-      <guard equation="py + 0.726542528005361*px&gt;=0 &amp;&amp; 0.587785252292473*vx + 0.809016994374947*vy&gt;0 &amp;&amp; trans&lt;6" />
+      <guard equation="py + 0.726542528005361*px&gt;=0 &amp;&amp; 0.587785252292473*vx + 0.809016994374947*vy&gt;0 &amp;&amp; trans&lt;8" />
       <action equation="ii = ii + 7.74867751838096*vx + 10.66513964386099*vy" />
       <action equation="vx = -0.42329949064832*vx - 1.95900368634417*vy" />
       <action equation="vy = -0.346343193165*vx + 0.52329949064*vy" />
       <action equation="trans = trans + one" />
     </transition>
     <transition destination="0" id="1" source="0">
-      <guard equation="py - 0.726542528005361*px&lt;=0 &amp;&amp; 0.587785252292473*vx - 0.809016994374947*vy&gt;0 &amp;&amp; trans&lt;6" />
+      <guard equation="py - 0.726542528005361*px&lt;=0 &amp;&amp; 0.587785252292473*vx - 0.809016994374947*vy&gt;0 &amp;&amp; trans&lt;8" />
       <action equation="ii = ii + 7.74867751838096*vx - 10.66513964386099*vy" />
       <action equation="vx = -0.42329949064832*vx + 1.95900368634417*vy" />
       <action equation="vy = 0.346343193165*vx + 0.52329949064*vy" />
       <action equation="trans = trans + one" />
     </transition>
+    <transition destination="1" id="2" source="0">
+      <guard equation="px&gt;=-0.002 &amp;&amp; vx&gt;=0 &amp;&amp; vy&lt;=0" />
+      <action equation="ii = ii + 3.2*vx-3.2*vy" />
+      <action equation="vx = 0" />
+      <action equation="vy = 0" />
+      <action equation="trans = trans + one" />
+    </transition>
+    <transition destination="1" id="3" source="0">
+      <guard equation="px&gt;=-0.002 &amp;&amp; vx&lt;=0 &amp;&amp; vy&gt;=0" />
+      <action equation="ii = ii + 3.2*vx-3.2*vy" />
+      <action equation="vx = 0" />
+      <action equation="vy = 0" />
+      <action equation="trans = trans + one" />
+    </transition>
+    <transition destination="1" id="4" source="0">
+      <guard equation="px&gt;=-0.002 &amp;&amp; vx&lt;=0 &amp;&amp; vy&lt;=0" />
+      <action equation="ii = ii + 3.2*vx-3.2*vy" />
+      <action equation="vx = 0" />
+      <action equation="vy = 0" />
+      <action equation="trans = trans + one" />
+    </transition>
+    <transition destination="1" id="5" source="0">
+      <guard equation="px&gt;=-0.002 &amp;&amp; vx&gt;=0 &amp;&amp; vy&gt;=0" />
+      <action equation="ii = ii + 3.2*vx-3.2*vy" />
+      <action equation="vx = 0" />
+      <action equation="vy = 0" />
+      <action equation="trans = trans + one" />
+    </transition>    
   </automaton>
   <composition automata="default_automaton" />
   <property initialSet="move_free:one==1&amp;&amp;trans==0&amp;&amp;vx==0&amp;&amp;vy==0&amp;&amp;px&gt;=-0.0168&amp;&amp;px&lt;=-0.0166&amp;&amp;py&gt;=0.0029&amp;&amp;py&lt;=0.0031&amp;&amp;ii==0" name="P1" type="Safety" unsafeSet="ii&gt;=20">
-    <parameters kvalue="2000.0" timehorizon="0.2" timestep="0.005" />
+    <parameters kvalue="2000.0" timehorizon="0.2" timestep="0.001" />
   </property>
 </hyxml>

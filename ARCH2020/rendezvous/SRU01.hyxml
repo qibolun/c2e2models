@@ -1,0 +1,88 @@
+<hyxml type="Model">
+  <automaton name="default_automaton">
+    <variable name="xp" scope="LOCAL_DATA" type="Real" />
+    <variable name="yp" scope="LOCAL_DATA" type="Real" />
+    <variable name="xd" scope="LOCAL_DATA" type="Real" />
+    <variable name="yd" scope="LOCAL_DATA" type="Real" />
+    <variable name="t" scope="LOCAL_DATA" type="Real" />
+    <variable name="loc" scope="LOCAL_DATA" type="Real" />
+    <mode id="0" initial="True" name="ProxA">
+      <dai equation="xp_dot= xd" />
+      <dai equation="yp_dot= yd" />
+      <dai equation="xd_dot= -2.89995083970656*xd - 0.0575997658817729*xp + 0.00877200894463775*yd + 0.000200959896519766*yp" />
+      <dai equation="yd_dot= -0.00875351105536225*xd - 0.000174031357370456*xp - 2.90300269286856*yd - 0.0665123984901026*yp" />
+      <dai equation="t_dot= 1" />
+      <dai equation="loc_dot= 0" />
+      <invariant equation="yp&lt;-100 || xp+yp&lt;-141.1 || xp&lt;-100 || yp-xp&gt;141.1 || yp&gt;100 || xp+yp&gt;141.1 || xp&gt;100 || yp-xp&lt;-141.1" />
+      <invariant equation="t&lt;=260" />
+    </mode>
+    <mode id="1" initial="False" name="ProxB">
+      <dai equation="xp_dot= xd" />
+      <dai equation="yp_dot= yd" />
+      <dai equation="xd_dot= -19.2299795908647*xd - 0.575999943070835*xp + 0.00876275931760007*yd + 0.000262486079431672*yp" />
+      <dai equation="yd_dot= -0.00876276068239993*xd - 0.000262486080737868*xp - 19.2299765959399*yd - 0.575999940191886*yp" />
+      <dai equation="t_dot= 1" />
+      <dai equation="loc_dot= 0" />
+      <invariant equation="yp&gt;=-100" />
+      <invariant equation="xp+yp&gt;=-141.1" />
+      <invariant equation="xp&gt;=-100" />
+      <invariant equation="yp-xp&lt;=141.1" />
+      <invariant equation="yp&lt;=100" />
+      <invariant equation="xp+yp&lt;=141.1" />
+      <invariant equation="xp&lt;=100" />
+      <invariant equation="yp-xp&gt;=-141.1" />
+      <invariant equation="t&lt;=260" />
+    </mode>
+    <mode id="2" initial="False" name="Passive">
+      <dai equation="xp_dot = xd" />
+      <dai equation="yp_dot = yd" />
+      <dai equation="xd_dot = 0.0000575894721132000*xp+0.00876276*yd" />
+      <dai equation="yd_dot = -0.00876276*xd" />
+      <dai equation="t_dot = 1" />
+      <dai equation="loc_dot= 0" />
+      <invariant equation="t&gt;=260" />
+    </mode>
+    <transition destination="1" id="0" source="0">
+      <guard equation="yp&gt;=-100&amp;&amp;xp+yp&gt;=-141.1&amp;&amp;xp&gt;=-100&amp;&amp;yp-xp&lt;=141.1&amp;&amp;yp&lt;=100&amp;&amp;xp+yp&lt;=141.1&amp;&amp;xp&lt;=100&amp;&amp;yp-xp&gt;=-141.1" />
+      <action equation="loc = 2" />
+    </transition>
+    <transition destination="2" id="0" source="0">
+      <guard equation="t&gt;=260" />
+      <action equation="loc = 3" />
+    </transition>
+    <transition destination="2" id="0" source="1">
+      <guard equation="t&gt;=260" />
+      <action equation="loc = 3" />
+    </transition>
+  </automaton>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==1&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0" name="LOS1" type="Safety" unsafeSet="loc==2&amp;&amp;xp&lt;-100">
+    <parameters kvalue="1.0" timehorizon="300.0" timestep="0.01" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==1&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0" name="VEL1" type="Safety" unsafeSet="loc==2&amp;&amp;xd&gt;3.0">
+    <parameters kvalue="0.0" timehorizon="300.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==1&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0" name="VEL2" type="Safety" unsafeSet="loc==2&amp;&amp;xd&lt;-3.0">
+    <parameters kvalue="0.0" timehorizon="300.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==1&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0" name="VEL3" type="Safety" unsafeSet="loc==2&amp;&amp;yd&gt;3.0">
+    <parameters kvalue="0.0" timehorizon="300.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==1&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0" name="VEL4" type="Safety" unsafeSet="loc==2&amp;&amp;yd&lt;-3.0">
+    <parameters kvalue="0.0" timehorizon="300.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==1&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0" name="VEL5" type="Safety" unsafeSet="loc==2&amp;&amp;yd+xd&gt;4.2426">
+    <parameters kvalue="0.0" timehorizon="300.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==1&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0" name="VEL6" type="Safety" unsafeSet="loc==2&amp;&amp;yd-xd&lt;-4.2426">
+    <parameters kvalue="0.0" timehorizon="300.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==1&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0" name="VEL7" type="Safety" unsafeSet="loc==2&amp;&amp;yd-xd&gt;4.2426">
+    <parameters kvalue="0.0" timehorizon="300.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==1&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0" name="VEL8" type="Safety" unsafeSet="loc==2&amp;&amp;yd+xd&lt;-4.2426">
+    <parameters kvalue="0.0" timehorizon="300.0" timestep="0.1" />
+  </property>
+  <property initialSet="ProxA:t==0&amp;&amp;loc==1&amp;&amp;xp&lt;=-875&amp;&amp;xp&gt;=-925&amp;&amp;yp&lt;=-375&amp;&amp;yp&gt;=-425&amp;&amp;xd&gt;=0&amp;&amp;xd&lt;=0&amp;&amp;yd&gt;=0&amp;&amp;yd&lt;=0" name="COL" type="Safety" unsafeSet="loc==3&amp;&amp;xp&gt;=-0.2&amp;&amp;xp&lt;=0.2&amp;&amp;yp&gt;=-0.2&amp;&amp;yp&lt;=0.2">
+    <parameters kvalue="2000.0" timehorizon="300.0" timestep="0.1" />
+  </property>
+</hyxml>

@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hyxml>
+<hyxml type="Model">
+  <automaton name="default_automaton">
+    <variable name="x1" type="real" scope="LOCAL_DATA"/>
+    <variable name="x2" type="real" scope="LOCAL_DATA"/>
+    <variable name="x3" type="real" scope="LOCAL_DATA"/>
+    <variable name="x4" type="real" scope="LOCAL_DATA"/>
+    <variable name="x5" type="real" scope="LOCAL_DATA"/>
+    <variable name="x6" type="real" scope="LOCAL_DATA"/>
+    <variable name="x7" type="real" scope="LOCAL_DATA"/>
+    <variable name="x8" type="real" scope="LOCAL_DATA"/>
+    <variable name="x9" type="real" scope="LOCAL_DATA"/>
+    <variable name="t" type="real" scope="LOCAL_DATA"/>
+    <mode id="1" name="negAngle" initial="False">
+      <dai equation="x1_dot=1.0/12.0*x7-x9"/>
+      <dai equation="x2_dot=(0.5*(12.0*x4-x7)+0.5*(12.0*x3-12.0*(x1+x8))+0.5*(12.0*5.0-1.0/0.3*(x2-1.0/12.0*10000.0*(x1--0.03)-0.0*x7))-x2)/0.1"/>
+      <dai equation="x3_dot=x4"/>
+      <dai equation="x4_dot=5.0"/>
+      <dai equation="x5_dot=x6"/>
+      <dai equation="x6_dot=1.0/140.0*(100000.0*(x8-x5)-5.6*x6)"/>
+      <dai equation="x7_dot=1.0/0.3*(x2-1.0/12.0*10000.0*(x1--0.03)-0.0*x7)"/>
+      <dai equation="x8_dot=x9"/>
+      <dai equation="x9_dot=0.01*(10000.0*(x1--0.03)-100000.0*(x8-x5)-1.0*x9)"/>
+      <dai equation="t_dot=1.0"/>
+      <invariant equation="x1&lt;=-0.03"/>
+    </mode>
+    <mode id="2" name="deadzone" initial="False">
+      <dai equation="x1_dot=1.0/12.0*x7-x9"/>
+      <dai equation="x2_dot=(0.5*(12.0*x4-x7)+0.5*(12.0*x3-12.0*(x1+x8))+0.5*(12.0*5.0-1.0/0.3*(x2-1.0/12.0*0.0*(x1--0.03)-0.0*x7))-x2)/0.1"/>
+      <dai equation="x3_dot=x4"/>
+      <dai equation="x4_dot=5.0"/>
+      <dai equation="x5_dot=x6"/>
+      <dai equation="x6_dot=1.0/140.0*(100000.0*(x8-x5)-5.6*x6)"/>
+      <dai equation="x7_dot=1.0/0.3*(x2-1.0/12.0*0.0*(x1--0.03)-0.0*x7)"/>
+      <dai equation="x8_dot=x9"/>
+      <dai equation="x9_dot=0.01*(0.0*(x1--0.03)-100000.0*(x8-x5)-1.0*x9)"/>
+      <dai equation="t_dot=1.0"/>
+      <invariant equation="x1&gt;=-0.03"/>
+      <invariant equation="x1&lt;=0.03"/>
+    </mode>
+    <mode id="3" name="posAngle" initial="False">
+      <dai equation="x1_dot=1.0/12.0*x7-x9"/>
+      <dai equation="x2_dot=(0.5*(12.0*x4-x7)+0.5*(12.0*x3-12.0*(x1+x8))+0.5*(12.0*5.0-1.0/0.3*(x2-1.0/12.0*10000.0*(x1-0.03)-0.0*x7))-x2)/0.1"/>
+      <dai equation="x3_dot=x4"/>
+      <dai equation="x4_dot=5.0"/>
+      <dai equation="x5_dot=x6"/>
+      <dai equation="x6_dot=1.0/140.0*(100000.0*(x8-x5)-5.6*x6)"/>
+      <dai equation="x7_dot=1.0/0.3*(x2-1.0/12.0*10000.0*(x1-0.03)-0.0*x7)"/>
+      <dai equation="x8_dot=x9"/>
+      <dai equation="x9_dot=0.01*(10000.0*(x1-0.03)-100000.0*(x8-x5)-1.0*x9)"/>
+      <dai equation="t_dot=1.0"/>
+      <invariant equation="x1&gt;=0.03"/>
+    </mode>
+    <mode id="4" name="negAngleInit" initial="True">
+      <dai equation="x1_dot=1.0/12.0*x7-x9"/>
+      <dai equation="x2_dot=(0.5*(12.0*x4-x7)+0.5*(12.0*x3-12.0*(x1+x8))+0.5*(12.0*-5.0-1.0/0.3*(x2-1.0/12.0*10000.0*(x1--0.03)-0.0*x7))-x2)/0.1"/>
+      <dai equation="x3_dot=x4"/>
+      <dai equation="x4_dot=-5.0"/>
+      <dai equation="x5_dot=x6"/>
+      <dai equation="x6_dot=1.0/140.0*(100000.0*(x8-x5)-5.6*x6)"/>
+      <dai equation="x7_dot=1.0/0.3*(x2-1.0/12.0*10000.0*(x1--0.03)-0.0*x7)"/>
+      <dai equation="x8_dot=x9"/>
+      <dai equation="x9_dot=0.01*(10000.0*(x1--0.03)-100000.0*(x8-x5)-1.0*x9)"/>
+      <dai equation="t_dot=1.0"/>
+      <invariant equation="t&lt;=0.2"/>
+    </mode>
+    <transition id="0" source="4" destination="1">
+      <guard equation="t &gt;= 0.2"/>
+    </transition>
+    <transition id="1" source="1" destination="2">
+      <guard equation="x1 &gt;= -0.03"/>
+    </transition>
+    <transition id="2" source="2" destination="3">
+      <guard equation="x1 &gt;= 0.03"/>
+    </transition>
+    <transition id="3" source="2" destination="1">
+      <guard equation="x1 &lt;= -0.03"/>
+    </transition>
+    <transition id="4" source="3" destination="2">
+      <guard equation="x1 &lt;= 0.03"/>
+    </transition>
+  </automaton>
+  <composition automata="default_automaton"/>
+  <property initialSet="negAngleInit:x1&gt;=-0.4348 &amp;&amp; x1&lt;=-1073/25000 &amp;&amp; x2&gt;=-22467/2000 &amp;&amp; x2&lt;=-21533/2000 &amp;&amp; x3 == 0.0 &amp;&amp; x4 &gt;= 29.5 &amp;&amp; x4 &lt;= 30.5 &amp;&amp; x5 == 0.0 &amp;&amp; x6&gt;=59/2 &amp;&amp; x6&lt;=61/2 &amp;&amp; x7&gt;=354 &amp;&amp; x7&lt;=366 &amp;&amp; x8&gt;=-27/20000 &amp;&amp; x8&lt;=-129/100000 &amp;&amp; x9&gt;=59/2 &amp;&amp; x9&lt;=61/2 &amp;&amp; t==0.0" name="stc" type="Safety" unsafeSet="x1>1000">
+    <parameters kvalue="1000" timehorizon="2.0" timestep="0.0005"/>
+  </property>
+</hyxml>

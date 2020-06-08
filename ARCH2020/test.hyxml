@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hyxml>
+<hyxml type="Model">
+  <automaton name="default_automaton">
+    <variable name="x1" type="real" scope="LOCAL_DATA"/>
+    <variable name="x2" type="real" scope="LOCAL_DATA"/>
+    <variable name="x3" type="real" scope="LOCAL_DATA"/>
+    <variable name="x4" type="real" scope="LOCAL_DATA"/>
+    <variable name="x5" type="real" scope="LOCAL_DATA"/>
+    <variable name="x6" type="real" scope="LOCAL_DATA"/>
+    <variable name="y1" type="real" scope="LOCAL_DATA"/>
+    <variable name="t" type="real" scope="LOCAL_DATA"/>
+    <variable name="u1" type="real" scope="LOCAL_DATA"/>
+    <variable name="stoptime" type="real" scope="LOCAL_DATA"/>
+    <mode id="1" name="Model" initial="True">
+      <dai equation="x1_dot=0.0061322*u1-0.0075102*x1+5.2756*x2-0.00096238*x3-0.6634*x4-0.006689*x5+0.16081*x6"/>
+      <dai equation="x2_dot=0.064531*u1-5.2756*x1-0.85737*x2+0.090377*x3+0.92166*x4+0.13158*x5-0.97335*x6"/>
+      <dai equation="x3_dot=0.00069603*u1-0.00096238*x1-0.090377*x2-0.00012541*x3-13.542*x4-0.00092367*x5+0.026749*x6"/>
+      <dai equation="x4_dot=0.6634*x1-0.062226*u1+0.92166*x2+13.542*x3-1.004*x4-0.17895*x5+1.117*x6"/>
+      <dai equation="x5_dot=0.0035048*u1-0.006689*x1-0.13158*x2-0.00092367*x3+0.17895*x4-0.008656*x5+23.761*x6"/>
+      <dai equation="x6_dot=0.047228*u1-0.16081*x1-0.97335*x2-0.026749*x3+1.117*x4-23.761*x5-1.5873*x6"/>
+      <dai equation="t_dot=1"/>
+      <dai equation="u1_dot=0"/>
+      <dai equation="stoptime_dot=0"/>
+      <invariant equation="t&lt;=stoptime&amp;&amp;y1==0.064531*x2-0.0061322*x1-0.00069603*x3-0.062226*x4-0.0035048*x5+0.047228*x6"/>
+    </mode>
+  </automaton>
+  <composition automata="default_automaton"/>
+  <property initialSet="Model:x1&gt;=0.0060145&amp;&amp;x1&lt;=0.0115005&amp;&amp;x2&gt;=-0.0009624&amp;&amp;x2&lt;=0.0025689&amp;&amp;x3&gt;=0.0177578&amp;&amp;x3&lt;=0.0257479&amp;&amp;x4&gt;=-0.0047553&amp;&amp;x4&lt;=-0.0001524&amp;&amp;x5&gt;=0.0177717&amp;&amp;x5&lt;=0.0371327&amp;&amp;x6&gt;=-0.0122932&amp;&amp;x6&lt;=-0.0046144&amp;&amp;y1&gt;=-0.0008518&amp;&amp;y1&lt;=0.0001322&amp;&amp;u1&gt;=0.8000000&amp;&amp;u1&lt;=1.0000000&amp;&amp;t==0&amp;&amp;stoptime==20.00" name="supp" type="Safety" unsafeSet="">
+    <parameters kvalue="" timehorizon="20.00" timestep=""/>
+  </property>
+</hyxml>
