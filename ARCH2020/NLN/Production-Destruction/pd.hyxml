@@ -1,0 +1,26 @@
+<hyxml type="Model">
+  <automaton name="default_automaton">
+    <variable name="x" scope="LOCAL_DATA" type="Real" />
+    <variable name="y" scope="LOCAL_DATA" type="Real" />
+    <variable name="z" scope="LOCAL_DATA" type="Real" />
+    <variable name="a" scope="LOCAL_DATA" type="Real" />
+    <mode id="0" initial="True" name="Model">
+      <dai equation="x_dot= -x*y/(1+x)" />
+      <dai equation="y_dot= x*y/(1+x)-a*y" />
+      <dai equation="z_dot= a*y" />
+      <dai equation="a_dot = 0" />
+    </mode>
+  </automaton>
+  <property initialSet="Model:x==9.98 &amp;&amp;y == 0.01 &amp;&amp; z==0.01 &amp;&amp;a==0.3 " name="Test" type="Safety" unsafeSet="z&lt;=0">
+    <parameters kvalue="1000.0" timehorizon="100.0" timestep="0.1" />
+  </property>
+  <property initialSet="Model:x&gt;=9.5 &amp;&amp; x&lt;=10.0 &amp;&amp; y == 0.01 &amp;&amp; z==0.01 &amp;&amp;a==0.3 " name="I" type="Safety" unsafeSet="z&lt;=0">
+    <parameters kvalue="1000.0" timehorizon="100.0" timestep="0.1" />
+  </property>
+  <property initialSet="Model:x==9.98 &amp;&amp; y == 0.01 &amp;&amp; z==0.01 &amp;&amp; a&gt;=0.296 &amp;&amp; a&lt;=0.304 " name="P" type="Safety" unsafeSet="z&lt;=0">
+    <parameters kvalue="1000.0" timehorizon="100.0" timestep="0.1" />
+  </property>
+  <property initialSet="Model:x&gt;=9.5 &amp;&amp; x&lt;=10.0 &amp;&amp; y == 0.01 &amp;&amp; z==0.01 &amp;&amp; a&gt;=0.296 &amp;&amp; a&lt;=0.304 " name="IP" type="Safety" unsafeSet="z&lt;=0">
+    <parameters kvalue="1000.0" timehorizon="100.0" timestep="0.1" />
+  </property>
+</hyxml>

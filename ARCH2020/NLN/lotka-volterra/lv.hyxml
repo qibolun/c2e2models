@@ -1,0 +1,13 @@
+<hyxml type="Model">
+  <automaton name="default_automaton">
+    <variable name="x" scope="LOCAL_DATA" type="Real" />
+    <variable name="y" scope="LOCAL_DATA" type="Real" />
+    <mode id="0" initial="True" name="Model">
+      <dai equation="x_dot= 3*x-3*x*y" />
+      <dai equation="y_dot= x*y-y" />
+    </mode>
+  </automaton>
+  <property initialSet="Model: x&gt;=1.292 &amp;&amp; x&lt;=1.308 &amp;&amp; y==1.0" name="p1" type="Safety" unsafeSet="x>1000">
+    <parameters kvalue="1000.0" timehorizon="3.64" timestep="0.01" />
+  </property>
+</hyxml>

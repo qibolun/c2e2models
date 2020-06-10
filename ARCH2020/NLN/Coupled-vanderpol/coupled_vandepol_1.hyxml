@@ -1,0 +1,17 @@
+<hyxml type="Model">
+  <automaton name="default_automaton">
+    <variable name="x1" scope="LOCAL_DATA" type="Real" />
+    <variable name="y1" scope="LOCAL_DATA" type="Real" />
+    <variable name="x2" scope="LOCAL_DATA" type="Real" />
+    <variable name="y2" scope="LOCAL_DATA" type="Real" />
+    <mode id="0" initial="True" name="Model">
+      <dai equation="x1_dot= y1" />
+      <dai equation="y1_dot= (1-x1*x1)*y1-2*x1+x2" />
+      <dai equation="x2_dot= y2" />
+      <dai equation="y2_dot = (1-x2*x2)*y2-2*x2+x1" />
+    </mode>
+  </automaton>
+  <property initialSet="Model:x1&gt;=1.25 &amp;&amp; x1&lt;=1.55 &amp;&amp; y1&gt;=2.35 &amp;&amp; y1&lt;=2.45 &amp;&amp; x2&gt;=1.25 &amp;&amp; x2&lt;=1.55 &amp;&amp; y2&gt;=2.35 &amp;&amp; y2&lt;=2.45" name="u1" type="Safety" unsafeSet="y1&gt;=2.75||y2&gt;=2.75">
+    <parameters kvalue="1000.0" timehorizon="7" timestep="0.1" />
+  </property>
+</hyxml>
